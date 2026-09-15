@@ -74,6 +74,7 @@ StyleCopReport.xml
 *.sln
 *.vcxproj
 *.vcxproj.filters
+*.vcxproj.user
 *.rc
 
 # Files built by Visual Studio
