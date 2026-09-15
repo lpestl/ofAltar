@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include <vector>
+#include <memory>
+
+#include "Trail.h"
 
 // A player entity that moves on the X/Y plane (up = Z axis).
 class Pawn {
@@ -21,6 +23,10 @@ public:
 	void turnLeft();
 	void turnRight();
 
+	// Set/override the trail component applied to this pawn.
+	void setTrail(std::unique_ptr<Trail> trail);
+	Trail* getTrail() const;
+
 	void draw();
 	void drawTrail();
 
@@ -28,5 +34,5 @@ private:
 	glm::vec3 _position;
 	glm::vec3 _direction; // Unit vector on the X/Y plane.
 	float _height;
-	std::vector<glm::vec3> _trail; // Positions the pawn has visited.
+	std::unique_ptr<Trail> _trail; // Trail component applied to this pawn.
 };

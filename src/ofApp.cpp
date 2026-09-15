@@ -1,4 +1,6 @@
 #include "ofApp.h"
+#include "WallTrail.h"
+#include "SquareTrail.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -44,6 +46,15 @@ void ofApp::keyPressed(int key){
 	} else if (key == OF_KEY_RIGHT) {
 		_pawn.turnRight();
 		_pawn.moveForward(50);
+	} else if (key == 't') {
+		// Toggle the pawn's trail component to demonstrate that it can be
+		// overridden (vertical walls <-> horizontal squares).
+		_useSquareTrail = !_useSquareTrail;
+		if (_useSquareTrail) {
+			_pawn.setTrail(std::make_unique<SquareTrail>());
+		} else {
+			_pawn.setTrail(std::make_unique<WallTrail>());
+		}
 	}
 }
 

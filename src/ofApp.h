@@ -25,4 +25,5 @@ class ofApp : public ofBaseApp{
 	private:
 		ofEasyCam _cam;
 		Pawn _pawn;
+		bool _useSquareTrail = false;
 };
